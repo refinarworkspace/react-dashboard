@@ -90,9 +90,11 @@ const Login = () => {
                   value={credentials.password}
                 />
               </FormGroup>
-              <div className="d-flex justify-content-between align-items-center">
-                <span className="fs-sm text-muted">Local demo session with no backend required.</span>
-                <div className="d-flex gap-2">
+              <div className={`d-flex justify-content-between align-items-center ${s.actions}`}>
+                <span className={`fs-sm text-muted ${s.actionNote}`}>
+                  Local demo session with no backend required.
+                </span>
+                <div className={`d-flex gap-2 ${s.actionButtons}`}>
                   <Button color="default" size="sm" tag={Link} to="/register">
                     Create account
                   </Button>

@@ -13,3 +13,37 @@
     font-size: 14px;
   }
 }
+
+@include media-breakpoint-down(sm) {
+  .root {
+    padding-top: 12vh;
+  }
+
+  .widget {
+    padding: 24px !important;
+
+    :global .form-control {
+      min-height: 44px;
+    }
+  }
+
+  .actions {
+    align-items: stretch !important;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .actionNote {
+    text-align: center;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    width: 100%;
+
+    :global .btn {
+      min-height: 44px;
+      width: 100%;
+    }
+  }
+}
