@@ -18,9 +18,13 @@ import s from './Header.module.scss';
 const Header = ({ sidebarOpen, sidebarToggle }) => {
   const dispatch = useAppDispatch();
   const session = useAppSelector((state) => state.auth.session);
+  const displayName = useAppSelector((state) => state.settings.displayName);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const adminName = useMemo(() => session?.user.name ?? 'Administrator', [session]);
+  const adminName = useMemo(
+    () => displayName || session?.user.name || 'Administrator',
+    [displayName, session]
+  );
 
   return (
     <header className={cx('navbar', s.root)}>
@@ -61,9 +65,9 @@ const Header = ({ sidebarOpen, sidebarToggle }) => {
           </button>
         </div>
         <div className={s.headerIcon}>
-          <button aria-label="Open settings" className="btn" type="button">
+          <NavLink aria-label="Open settings" className="btn" to="/app/settings">
             <Gear aria-hidden="true" size={18} />
-          </button>
+          </NavLink>
         </div>
         <div className="dropdown">
           <button

@@ -6,8 +6,8 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: $sidebar-bg-color;
-  color: $sidebar-color;
+  background-color: var(--app-surface, $sidebar-bg-color);
+  color: var(--app-text, $sidebar-color);
 }
 
 .logo {

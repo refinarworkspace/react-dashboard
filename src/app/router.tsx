@@ -20,6 +20,7 @@ const TypographyPage = lazy(() => import('../pages/typography/Typography'));
 const LoginPage = lazy(() => import('../pages/login/Login'));
 const RegisterPage = lazy(() => import('../pages/register/Register'));
 const ProfilePage = lazy(() => import('../pages/profile/Profile'));
+const SettingsPage = lazy(() => import('../pages/settings/Settings'));
 const PrivacyPage = lazy(() => import('../pages/privacy/Privacy'));
 const PostListPage = lazy(() => import('../pages/posts/list/PostList'));
 const PostNewPage = lazy(() => import('../pages/posts/new/PostNew'));
@@ -104,6 +105,7 @@ export const routes: RouteObject[] = [
       { path: 'posts', element: renderLazyPage(PostListPage) },
       { path: 'posts/new', element: renderLazyPage(PostNewPage) },
       { path: 'profile', element: renderLazyPage(ProfilePage) },
+      { path: 'settings', element: renderLazyPage(SettingsPage) },
       { path: 'privacy', element: renderLazyPage(PrivacyPage) },
       { path: 'tos', element: renderLazyPage(TermsPage) },
       { path: '*', element: renderLazyPage(NotFoundPage) },

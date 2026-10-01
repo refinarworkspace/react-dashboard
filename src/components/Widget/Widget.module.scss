@@ -5,13 +5,13 @@
   position: relative;
   margin-bottom: 30px;
   padding: $widget-padding-y $widget-padding-x;
-  background: $widget-bg;
+  background: var(--app-surface, $widget-bg);
 }
 
 .title {
   margin-top: 0;
   margin-bottom: 1.5rem / 2;
-  color: $widget-title-color;
+  color: var(--app-text, $widget-title-color);
 
   @include clearfix();
 }

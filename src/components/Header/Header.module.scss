@@ -10,11 +10,11 @@
 @use '../../styles/app' as *;
 
 .root {
-  background: $navbar-bg-color;
+  background: var(--app-surface, $navbar-bg-color);
 
   :global {
     .input-group {
-      background-color: $gray-100;
+      background-color: var(--app-elevated-surface, $gray-100);
 
       @include media-breakpoint-down(xs) {
         display: none;
@@ -23,6 +23,7 @@
       input {
         background: transparent;
         border: none;
+        color: var(--app-text, $text-color);
         width: 250px;
 
         @include media-breakpoint-down(md) {
@@ -34,16 +35,16 @@
         }
 
         &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-          color: $gray-300;
+          color: var(--app-muted-text, $gray-300);
           opacity: 1; /* Firefox */
         }
 
         &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-          color: $gray-300;
+          color: var(--app-muted-text, $gray-300);
         }
 
         &::-ms-input-placeholder { /* Microsoft Edge */
-          color: $gray-300;
+          color: var(--app-muted-text, $gray-300);
         }
 
         &:hover,
@@ -74,8 +75,8 @@
 
     .dropdown-item {
       &:active {
-        background-color: $gray-200;
-        color: $text-color;
+        background-color: var(--app-hover-bg, $gray-200);
+        color: var(--app-text, $text-color);
       }
 
       &:focus {
@@ -121,14 +122,15 @@
   }
 
   :global .btn {
-    background: $white;
+    background: var(--app-surface, $white);
+    color: var(--app-text, $text-color);
     border: none;
 
     &:hover,
     &:active,
     &:focus,
     &:focus:active {
-      background: $white;
+      background: var(--app-surface, $white);
       box-shadow: none !important;
       outline: none;
     }

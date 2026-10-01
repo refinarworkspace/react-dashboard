@@ -1,0 +1,37 @@
+@use '../../styles/app' as *;
+
+.root {
+  h1 {
+    color: var(--app-text, $text-color);
+  }
+}
+
+.divider {
+  border-color: var(--app-border, $gray-200);
+  margin: 1.5rem 0;
+  opacity: 1;
+}
+
+.appearance {
+  align-items: center;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+
+  h2 {
+    color: var(--app-text, $text-color);
+    font-size: 1rem;
+    font-weight: $font-weight-semi-bold;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    color: var(--app-muted-text, $gray-500);
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

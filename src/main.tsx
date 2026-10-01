@@ -6,10 +6,13 @@ import { ToastContainer } from 'react-toastify';
 
 import { router } from './app/router';
 import { store } from './app/store';
+import { applyThemePreference, readThemePreference } from './features/settings/settingsStorage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/fonts.css';
 import './styles/theme.scss';
+
+applyThemePreference(readThemePreference());
 
 const container = document.getElementById('root');
 
