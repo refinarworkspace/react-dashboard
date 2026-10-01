@@ -6,7 +6,9 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { createAppStore } from '../../app/store';
 import {
   DISPLAY_NAME_STORAGE_KEY,
+  EMAIL_NOTIFICATIONS_STORAGE_KEY,
   THEME_STORAGE_KEY,
+  WEEKLY_SUMMARY_STORAGE_KEY,
 } from '../../features/settings/settingsStorage';
 import Settings from './Settings';
 
@@ -39,5 +41,13 @@ describe('settings form', () => {
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
     expect(store.getState().settings.theme).toBe('dark');
+
+    fireEvent.click(screen.getByRole('switch', { name: 'Email notifications' }));
+    fireEvent.click(screen.getByRole('switch', { name: 'Weekly summary' }));
+
+    expect(localStorage.getItem(EMAIL_NOTIFICATIONS_STORAGE_KEY)).toBe('false');
+    expect(localStorage.getItem(WEEKLY_SUMMARY_STORAGE_KEY)).toBe('true');
+    expect(store.getState().settings.emailNotifications).toBe(false);
+    expect(store.getState().settings.weeklySummary).toBe(true);
   });
 });

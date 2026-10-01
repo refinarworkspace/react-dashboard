@@ -13,11 +13,18 @@ import {
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Widget from '../../components/Widget';
-import { setDisplayName, setTheme } from '../../features/settings/settingsSlice';
+import {
+  setDisplayName,
+  setEmailNotifications,
+  setTheme,
+  setWeeklySummary,
+} from '../../features/settings/settingsSlice';
 import {
   applyThemePreference,
   saveDisplayName,
+  saveEmailNotificationsPreference,
   saveThemePreference,
+  saveWeeklySummaryPreference,
 } from '../../features/settings/settingsStorage';
 import s from './Settings.module.scss';
 
@@ -26,6 +33,8 @@ const Settings = () => {
   const savedDisplayName = useAppSelector((state) => state.settings.displayName);
   const accountName = useAppSelector((state) => state.auth.session?.user.name);
   const theme = useAppSelector((state) => state.settings.theme);
+  const emailNotifications = useAppSelector((state) => state.settings.emailNotifications);
+  const weeklySummary = useAppSelector((state) => state.settings.weeklySummary);
   const [displayName, setDisplayNameValue] = useState(
     savedDisplayName || accountName || 'Administrator'
   );
@@ -51,6 +60,20 @@ const Settings = () => {
     saveThemePreference(nextTheme);
     applyThemePreference(nextTheme);
     dispatch(setTheme(nextTheme));
+  };
+
+  const handleEmailNotificationsChange = (event) => {
+    const enabled = event.target.checked;
+
+    saveEmailNotificationsPreference(enabled);
+    dispatch(setEmailNotifications(enabled));
+  };
+
+  const handleWeeklySummaryChange = (event) => {
+    const enabled = event.target.checked;
+
+    saveWeeklySummaryPreference(enabled);
+    dispatch(setWeeklySummary(enabled));
   };
 
   return (
@@ -114,6 +137,45 @@ const Settings = () => {
                 <Label check for="settings-dark-theme">
                   Dark theme
                 </Label>
+              </div>
+            </section>
+
+            <hr className={s.divider} />
+
+            <section aria-labelledby="settings-notifications-title" className={s.appearance}>
+              <div>
+                <h2 id="settings-notifications-title">Notifications</h2>
+                <p>Choose which email updates you receive.</p>
+              </div>
+              <div className={s.notificationOptions}>
+                <div className="form-check form-switch">
+                  <Input
+                    checked={emailNotifications}
+                    className="form-check-input"
+                    id="settings-email-notifications"
+                    name="emailNotifications"
+                    onChange={handleEmailNotificationsChange}
+                    role="switch"
+                    type="checkbox"
+                  />
+                  <Label check for="settings-email-notifications">
+                    Email notifications
+                  </Label>
+                </div>
+                <div className="form-check form-switch">
+                  <Input
+                    checked={weeklySummary}
+                    className="form-check-input"
+                    id="settings-weekly-summary"
+                    name="weeklySummary"
+                    onChange={handleWeeklySummaryChange}
+                    role="switch"
+                    type="checkbox"
+                  />
+                  <Label check for="settings-weekly-summary">
+                    Weekly summary
+                  </Label>
+                </div>
               </div>
             </section>
           </Widget>
