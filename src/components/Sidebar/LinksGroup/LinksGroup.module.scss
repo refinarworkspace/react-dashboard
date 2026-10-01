@@ -4,7 +4,7 @@
   a,
   button {
     display: flex;
-    color: $gray-500;
+    color: var(--app-muted-text, $gray-500);
     align-items: center;
     text-decoration: none;
     cursor: pointer;
@@ -25,7 +25,7 @@
 
     &:hover {
       font-weight: $font-weight-thin;
-      background-color: $gray-100;
+      background-color: var(--app-hover-bg, $gray-100);
     }
 
     &:focus {
@@ -41,7 +41,7 @@
 }
 
 .arrow {
-  color: $gray-400;
+  color: var(--app-muted-text, $gray-400);
   transition: 0.3s;
   right: 0;
 }
@@ -62,7 +62,7 @@
   box-shadow: none;
   margin: 0;
   border-radius: 0;
-  background: rgba(#000, 0.1);
+  background: var(--app-panel-bg, rgba(#000, 0.1));
 
   div {
     padding: 0;

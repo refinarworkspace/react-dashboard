@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from '../features/auth/authSlice';
 import postsReducer from '../features/posts/postsSlice';
+import settingsReducer from '../features/settings/settingsSlice';
 import uiReducer from '../features/ui/uiSlice';
 
 export const createAppStore = () =>
@@ -9,6 +10,7 @@ export const createAppStore = () =>
     reducer: {
       auth: authReducer,
       posts: postsReducer,
+      settings: settingsReducer,
       ui: uiReducer,
     },
   });

@@ -17,6 +17,7 @@ const Sidebar = () => (
       <LinksGroup glyph="typography" header="Typography" headerLink="/app/typography" />
       <LinksGroup glyph="tables" header="Tables Basic" headerLink="/app/tables" />
       <LinksGroup glyph="notifications" header="Notifications" headerLink="/app/notifications" />
+      <LinksGroup glyph="settings" header="Settings" headerLink="/app/settings" />
       <LinksGroup
         glyph="components"
         header="Components"
